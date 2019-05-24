@@ -19,10 +19,11 @@ namespace WindowsFormsApp1
         public int Time { get; set; }
         public double Power { get; set; }
     }
+
     public partial class Form1 : Form
     {
         int x = 0;
-        private List<Entry> list;
+        public List<Entry> list;
         public Form1()
         {
             InitializeComponent();
@@ -46,14 +47,19 @@ namespace WindowsFormsApp1
 
         private void Server_DataReceived(object sender, SimpleTCP.Message e)
         {
+            DataPoint dp;
             txtStatus.Invoke((MethodInvoker)delegate ()
             {
                 txtStatus.Text += e.MessageString+"\n";
                 x++;
+                dp=new DataPoint(x, Convert.ToDouble(e.MessageString));
+                chart1.Series["Power (W)"].Points.Add(dp);
+                chart1.ResetAutoValues(); // Add this line.
+
+                // chart1.DataBind();
                 e.ReplyLine(string.Format("You Said {0}", e.MessageString));
                 // Frist parameter is X-Axis and Second is Collection of Y- Axis
-                list.Add(new Entry { Time = x, Power = 5 });
-                chart1.DataBind();
+
 
 
             }
@@ -71,9 +77,9 @@ namespace WindowsFormsApp1
             chart1.Series["Power (W)"].ChartType = SeriesChartType.Line;
             chart1.Series["Power (W)"].XValueMember = "Time";
             chart1.Series["Power (W)"].YValueMembers = "Power (W)";
-            list = new List<Entry>();
-            chart1.DataSource = list;
-
+            //list = new List<Entry>();
+            //chart1.DataSource = list;
+           // chart1.DataBind();
 
         }
 
