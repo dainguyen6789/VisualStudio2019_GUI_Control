@@ -32,6 +32,14 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.Start_btn = new System.Windows.Forms.Button();
             this.HostIP_txtBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,9 +56,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.ReceivedData_groupBox = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.chartPosition = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartSunLight = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPosition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSunLight)).BeginInit();
             this.SuspendLayout();
             // 
             // Start_btn
@@ -102,6 +115,11 @@
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
+            legend1.Position.Auto = false;
+            legend1.Position.Height = 9.638555F;
+            legend1.Position.Width = 15F;
+            legend1.Position.X = 85F;
+            legend1.Position.Y = 5F;
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(89, 321);
             this.chart1.Name = "chart1";
@@ -112,7 +130,10 @@
             this.chart1.Size = new System.Drawing.Size(472, 250);
             this.chart1.TabIndex = 5;
             this.chart1.Text = "chart1";
+            title1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
             title1.Name = "Title1";
+            title1.Text = "System Power (W)";
+            title1.TextStyle = System.Windows.Forms.DataVisualization.Charting.TextStyle.Shadow;
             this.chart1.Titles.Add(title1);
             // 
             // txtStatus
@@ -218,11 +239,61 @@
             this.ReceivedData_groupBox.TabStop = false;
             this.ReceivedData_groupBox.Text = "Received Data";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(636, 67);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "label5";
+            // 
+            // chartPosition
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartPosition.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartPosition.Legends.Add(legend2);
+            this.chartPosition.Location = new System.Drawing.Point(594, 57);
+            this.chartPosition.Name = "chartPosition";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Position (mm)";
+            this.chartPosition.Series.Add(series2);
+            this.chartPosition.Size = new System.Drawing.Size(472, 250);
+            this.chartPosition.TabIndex = 14;
+            this.chartPosition.Text = "chart2";
+            title2.Name = "Title1";
+            title2.Text = "Motor Position";
+            this.chartPosition.Titles.Add(title2);
+            // 
+            // chartSunLight
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chartSunLight.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartSunLight.Legends.Add(legend3);
+            this.chartSunLight.Location = new System.Drawing.Point(594, 321);
+            this.chartSunLight.Name = "chartSunLight";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Sunlight (W/m2)";
+            this.chartSunLight.Series.Add(series3);
+            this.chartSunLight.Size = new System.Drawing.Size(472, 250);
+            this.chartSunLight.TabIndex = 15;
+            this.chartSunLight.Text = "chart3";
+            title3.Name = "Title1";
+            title3.Text = "Sun Light (W/m2)";
+            this.chartSunLight.Titles.Add(title3);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 667);
+            this.ClientSize = new System.Drawing.Size(1080, 584);
+            this.Controls.Add(this.chartSunLight);
+            this.Controls.Add(this.chartPosition);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.label1);
@@ -237,6 +308,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPosition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSunLight)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,5 +333,8 @@
         private System.Windows.Forms.Label SetIP_lbl;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartPosition;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartSunLight;
     }
 }

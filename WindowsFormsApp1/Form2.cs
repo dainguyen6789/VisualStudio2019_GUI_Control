@@ -33,10 +33,12 @@ namespace WindowsFormsApp1
         private void Server_DataReceived(object sender, SimpleTCP.Message e)
         {
             DataPoint dp;
+            char encoded;
             txtStatus.Invoke((MethodInvoker)delegate ()
             {
                 txtStatus.Text += e.MessageString + "\n";
-                //txtStatus.Text[txtStatus.Text.Length] = "0";
+                encoded = e.MessageString[0];
+                label5.Text = encoded+"\0";
                 x++;
                 //e.ReplyLine(string.Format("You Said {0}", e.MessageString));
                 dp = new DataPoint(x, Convert.ToDouble(e.MessageString));
@@ -85,12 +87,25 @@ namespace WindowsFormsApp1
             //if (chart1.Series["Power (W)"] == null)
             {
                 //chart1.Series.Add("Power (W)");
-                chart1.Series["Power (W)"].ChartType = SeriesChartType.Line;
-                chart1.Series["Power (W)"].XValueMember = "Time";
-                chart1.Series["Power (W)"].YValueMembers = "Power (W)";
-                list = new List<Entry>();
-                chart1.DataSource = list;
+                chart1.Series[0].ChartType = SeriesChartType.Line;
+                chart1.Series[0].XValueMember = "Time";
+                chart1.Series[0].YValueMembers = "Power (W)";
+                //var chartArea = new ChartArea("chart1");
+                chart1.ChartAreas[0].AxisX.Title = "Time";
+                // list = new List<Entry>();
+                //chart1.DataSource = list;
+
             }
+
+            chartSunLight.Series[0].ChartType = SeriesChartType.Line;
+            chartSunLight.Series[0].XValueMember = "Time";
+            chartSunLight.Series[0].YValueMembers = "Sun Light";
+            chartSunLight.ChartAreas[0].AxisX.Title = "Time";
+
+            chartPosition.Series[0].ChartType = SeriesChartType.Line;
+            chartPosition.Series[0].XValueMember = "Time";
+            chartPosition.Series[0].YValueMembers = "Sun Light";
+            chartPosition.ChartAreas[0].AxisX.Title = "Time";
         }
     }
 }
