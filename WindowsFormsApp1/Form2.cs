@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsApp1
 {
@@ -86,7 +88,7 @@ namespace WindowsFormsApp1
                 // Power Chart
                 else if (encoded[0] == 'W')
                 {
-                    power = 7.2 * (   ((Convert.ToDouble(temp_string) / 255 * 5)-2.5)*10    );
+                    power = 7.2 * (   (Convert.ToDouble(temp_string)-2.5)*10    );
                     dp = new DataPoint(realtime + x * fake_time_step, power);
 
                     chartPower.Series[0].Points.Add(dp);
@@ -162,6 +164,9 @@ namespace WindowsFormsApp1
                 //chart1.DataSource = list;
 
             }
+            datetimePower.Text = DateTime.Now.ToString("yyyy:MM:dd");
+            datetimePosition.Text = DateTime.Now.ToString("yyyy:MM:dd");
+            datetimeSunLight.Text = DateTime.Now.ToString("yyyy:MM:dd");
 
             chartSunLight.Series[0].ChartType = SeriesChartType.Line;
             chartSunLight.Series[0].XValueMember = "Time";
@@ -177,6 +182,127 @@ namespace WindowsFormsApp1
 
 
 
+        }
+
+        private void ClearChart_btn_Click(object sender, EventArgs e)
+        {
+            foreach (var series in chartPower.Series)
+            {
+                series.Points.Clear();
+            }
+
+            foreach (var series in chartPosition.Series)
+            {
+                series.Points.Clear();
+            }
+
+            foreach (var series in chartSunLight.Series)
+            {
+                series.Points.Clear();
+            }
+        }
+
+        private void AaaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void Quit_btn_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+
+        }
+
+        private void ClearRxData_btn_Click(object sender, EventArgs e)
+        {
+            txtStatus.Text = null;
+        }
+
+        private void SaveData_btn_Click(object sender, EventArgs e)
+{
+            //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            //saveFileDialog1.Filter = "Text|*.txt";
+            //saveFileDialog1.Title = "Save an Text File";
+            //saveFileDialog1.ShowDialog();
+            //string path, name;
+            string folderName = @"C:\Users\designer\Documents";
+
+            // To create a string that specifies the path to a subfolder under your 
+            // top-level folder, add a name for the subfolder to folderName.
+            string pathString = System.IO.Path.Combine(folderName, "ISPData");
+
+            // You can write out the path name directly instead of using the Combine
+            // method. Combine just makes the process easier.
+           // string pathString2 = @"c:\Top-Level Folder\SubFolder2";
+
+            // You can extend the depth of your path if you want to.
+            //pathString = System.IO.Path.Combine(pathString, "SubSubFolder");
+
+            // Create the subfolder. You can verify in File Explorer that you have this
+            // structure in the C: drive.
+            //    Local Disk (C:)
+            //        Top-Level Folder
+            //            SubFolder
+            System.IO.Directory.CreateDirectory(pathString);
+            //path = pathString + name + ".txt";
+            //TextWriter txt = new StreamWriter("C: \\Users\\designer\\Documents\\demo.txt");
+            //txt.Write(txtStatus.Text);
+            //txt.Close();
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            //saveFileDialog1.InitialDirectory = @"C:\";      
+            saveFileDialog1.Title = "Save text Files";
+            //saveFileDialog1.CheckFileExists = true;
+            saveFileDialog1.CheckPathExists = true;
+            saveFileDialog1.DefaultExt = "txt";
+            saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //txtStatus.Text = saveFileDialog1.FileName;
+                using (File.Create(saveFileDialog1.FileName));
+                TextWriter txt = new StreamWriter(saveFileDialog1.FileName);
+                txt.Write(txtStatus.Text);
+                txt.Close();
+            }
+        }
+
+        private void SaveChart_btn_Click(object sender, EventArgs e)
+        {
+
+                SaveFileDialog dlg = new SaveFileDialog();
+                dlg.Filter = "PNG (*.png)|*.png|All files (*.*)|*.*";
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.chartPower.SaveImage(dlg.FileName, ChartImageFormat.Png);
+            }
+
+        }
+
+        private void SavePosChart_btn_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Filter = "PNG (*.png)|*.png|All files (*.*)|*.*";
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.chartPosition.SaveImage(dlg.FileName, ChartImageFormat.Png);
+            }
+        }
+
+        private void SaveSunLightChart_btn_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Filter = "PNG (*.png)|*.png|All files (*.*)|*.*";
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.chartSunLight.SaveImage(dlg.FileName, ChartImageFormat.Png);
+            }
         }
     }
 }

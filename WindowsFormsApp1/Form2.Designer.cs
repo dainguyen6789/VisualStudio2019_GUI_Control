@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.Start_btn = new System.Windows.Forms.Button();
             this.HostIP_txtBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,6 +50,9 @@
             this.EnableHost_checkBox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ClientConnected_checkBox = new System.Windows.Forms.CheckBox();
+            this.ClientConnected_panel = new System.Windows.Forms.Panel();
+            this.panelStatus = new System.Windows.Forms.Panel();
             this.SetPort_lbl = new System.Windows.Forms.Label();
             this.SetIP_lbl = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,33 +62,55 @@
             this.chartPosition = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartSunLight = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.panelStatus = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.ClientConnected_panel = new System.Windows.Forms.Panel();
-            this.ClientConnected_checkBox = new System.Windows.Forms.CheckBox();
+            this.ClearChart_btn = new System.Windows.Forms.Button();
+            this.SaveChart_btn = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.aaaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.innovativeSolarPowerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Quit_btn = new System.Windows.Forms.Button();
+            this.ClearRxData_btn = new System.Windows.Forms.Button();
+            this.SaveSunLightChart_btn = new System.Windows.Forms.Button();
+            this.SaveData_btn = new System.Windows.Forms.Button();
+            this.SavePosChart_btn = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.datetimePower = new System.Windows.Forms.Label();
+            this.datetimePosition = new System.Windows.Forms.Label();
+            this.datetimeSunLight = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chartPower)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.ReceivedData_groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartPosition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSunLight)).BeginInit();
+            this.menuStrip1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // Start_btn
             // 
-            this.Start_btn.Location = new System.Drawing.Point(58, 83);
+            this.Start_btn.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.Start_btn.Location = new System.Drawing.Point(13, 77);
             this.Start_btn.Name = "Start_btn";
             this.Start_btn.Size = new System.Drawing.Size(75, 23);
             this.Start_btn.TabIndex = 0;
             this.Start_btn.Text = "Init Host";
-            this.Start_btn.UseVisualStyleBackColor = true;
+            this.Start_btn.UseVisualStyleBackColor = false;
             this.Start_btn.Click += new System.EventHandler(this.Start_btn_Click);
             // 
             // HostIP_txtBox
             // 
-            this.HostIP_txtBox.Location = new System.Drawing.Point(89, 82);
+            this.HostIP_txtBox.Location = new System.Drawing.Point(58, 19);
             this.HostIP_txtBox.Name = "HostIP_txtBox";
             this.HostIP_txtBox.Size = new System.Drawing.Size(100, 20);
             this.HostIP_txtBox.TabIndex = 1;
@@ -94,7 +119,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 85);
+            this.label1.Location = new System.Drawing.Point(10, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 2;
@@ -102,7 +127,7 @@
             // 
             // Port_txtBox
             // 
-            this.Port_txtBox.Location = new System.Drawing.Point(58, 55);
+            this.Port_txtBox.Location = new System.Drawing.Point(58, 42);
             this.Port_txtBox.Name = "Port_txtBox";
             this.Port_txtBox.Size = new System.Drawing.Size(100, 20);
             this.Port_txtBox.TabIndex = 3;
@@ -111,7 +136,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 58);
+            this.label2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(10, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 4;
@@ -119,36 +145,34 @@
             // 
             // chartPower
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartPower.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            legend4.Position.Auto = false;
-            legend4.Position.Height = 9.638555F;
-            legend4.Position.Width = 15F;
-            legend4.Position.X = 85F;
-            legend4.Position.Y = 5F;
-            this.chartPower.Legends.Add(legend4);
-            this.chartPower.Location = new System.Drawing.Point(89, 321);
+            chartArea1.Name = "ChartArea1";
+            this.chartPower.ChartAreas.Add(chartArea1);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.Name = "Legend1";
+            this.chartPower.Legends.Add(legend1);
+            this.chartPower.Location = new System.Drawing.Point(13, 19);
             this.chartPower.Name = "chartPower";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Legend = "Legend1";
-            series4.Name = "Power (W)";
-            this.chartPower.Series.Add(series4);
-            this.chartPower.Size = new System.Drawing.Size(472, 250);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            series1.Name = "Power (W)";
+            this.chartPower.Series.Add(series1);
+            this.chartPower.Size = new System.Drawing.Size(547, 313);
             this.chartPower.TabIndex = 5;
             this.chartPower.Text = "chart1";
-            title4.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            title4.Name = "Title1";
-            title4.Text = "System Power (W)";
-            title4.TextStyle = System.Windows.Forms.DataVisualization.Charting.TextStyle.Shadow;
-            this.chartPower.Titles.Add(title4);
+            title1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            title1.Name = "Title1";
+            title1.ShadowColor = System.Drawing.SystemColors.ActiveBorder;
+            title1.Text = "System Power (W)";
+            title1.TextStyle = System.Windows.Forms.DataVisualization.Charting.TextStyle.Shadow;
+            this.chartPower.Titles.Add(title1);
             // 
             // txtStatus
             // 
-            this.txtStatus.Location = new System.Drawing.Point(89, 193);
+            this.txtStatus.Location = new System.Drawing.Point(13, 47);
             this.txtStatus.Name = "txtStatus";
-            this.txtStatus.Size = new System.Drawing.Size(472, 96);
+            this.txtStatus.Size = new System.Drawing.Size(547, 87);
             this.txtStatus.TabIndex = 6;
             this.txtStatus.Text = "";
             // 
@@ -165,19 +189,29 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.Quit_btn);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.HostIP_txtBox);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.ClearChart_btn);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.Start_btn);
             this.groupBox1.Controls.Add(this.Port_txtBox);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(31, 57);
+            this.groupBox1.Location = new System.Drawing.Point(24, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(547, 117);
+            this.groupBox1.Size = new System.Drawing.Size(570, 148);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "User Config";
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox2.Controls.Add(this.ClientConnected_checkBox);
             this.groupBox2.Controls.Add(this.ClientConnected_panel);
             this.groupBox2.Controls.Add(this.panelStatus);
@@ -189,10 +223,37 @@
             this.groupBox2.Controls.Add(this.checkBox2);
             this.groupBox2.Location = new System.Drawing.Point(247, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(283, 99);
+            this.groupBox2.Size = new System.Drawing.Size(306, 70);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Status";
+            // 
+            // ClientConnected_checkBox
+            // 
+            this.ClientConnected_checkBox.AutoSize = true;
+            this.ClientConnected_checkBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientConnected_checkBox.Location = new System.Drawing.Point(170, 46);
+            this.ClientConnected_checkBox.Name = "ClientConnected_checkBox";
+            this.ClientConnected_checkBox.Size = new System.Drawing.Size(107, 17);
+            this.ClientConnected_checkBox.TabIndex = 18;
+            this.ClientConnected_checkBox.Text = "Client Connected";
+            this.ClientConnected_checkBox.UseVisualStyleBackColor = false;
+            // 
+            // ClientConnected_panel
+            // 
+            this.ClientConnected_panel.BackColor = System.Drawing.Color.Red;
+            this.ClientConnected_panel.Location = new System.Drawing.Point(147, 46);
+            this.ClientConnected_panel.Name = "ClientConnected_panel";
+            this.ClientConnected_panel.Size = new System.Drawing.Size(17, 17);
+            this.ClientConnected_panel.TabIndex = 17;
+            // 
+            // panelStatus
+            // 
+            this.panelStatus.BackColor = System.Drawing.Color.Red;
+            this.panelStatus.Location = new System.Drawing.Point(147, 23);
+            this.panelStatus.Name = "panelStatus";
+            this.panelStatus.Size = new System.Drawing.Size(17, 17);
+            this.panelStatus.TabIndex = 16;
             // 
             // SetPort_lbl
             // 
@@ -243,65 +304,70 @@
             // 
             // ReceivedData_groupBox
             // 
-            this.ReceivedData_groupBox.Location = new System.Drawing.Point(31, 180);
+            this.ReceivedData_groupBox.Controls.Add(this.SaveData_btn);
+            this.ReceivedData_groupBox.Controls.Add(this.ClearRxData_btn);
+            this.ReceivedData_groupBox.Controls.Add(this.txtStatus);
+            this.ReceivedData_groupBox.Location = new System.Drawing.Point(24, 198);
             this.ReceivedData_groupBox.Name = "ReceivedData_groupBox";
-            this.ReceivedData_groupBox.Size = new System.Drawing.Size(536, 117);
+            this.ReceivedData_groupBox.Size = new System.Drawing.Size(570, 148);
             this.ReceivedData_groupBox.TabIndex = 12;
             this.ReceivedData_groupBox.TabStop = false;
             this.ReceivedData_groupBox.Text = "Received Data";
             // 
             // chartPosition
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartPosition.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartPosition.Legends.Add(legend5);
-            this.chartPosition.Location = new System.Drawing.Point(594, 39);
+            chartArea2.Name = "ChartArea1";
+            this.chartPosition.ChartAreas.Add(chartArea2);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend2.IsDockedInsideChartArea = false;
+            legend2.Name = "Legend1";
+            this.chartPosition.Legends.Add(legend2);
+            this.chartPosition.Location = new System.Drawing.Point(18, 16);
             this.chartPosition.Name = "chartPosition";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Legend = "Legend1";
-            series5.Name = "Position (mm)";
-            this.chartPosition.Series.Add(series5);
-            this.chartPosition.Size = new System.Drawing.Size(472, 250);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.CustomProperties = "LabelStyle=Top";
+            series2.Legend = "Legend1";
+            series2.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            series2.Name = "Position (mm)";
+            this.chartPosition.Series.Add(series2);
+            this.chartPosition.Size = new System.Drawing.Size(579, 283);
             this.chartPosition.TabIndex = 14;
             this.chartPosition.Text = "chart2";
-            title5.Name = "Title1";
-            title5.Text = "Motor Position";
-            this.chartPosition.Titles.Add(title5);
+            title2.Name = "Title1";
+            title2.Position.Auto = false;
+            title2.Position.Height = 5.384036F;
+            title2.Position.Width = 94F;
+            title2.Position.X = 3F;
+            title2.Position.Y = 1F;
+            title2.Text = "Motor Position";
+            this.chartPosition.Titles.Add(title2);
             // 
             // chartSunLight
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartSunLight.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartSunLight.Legends.Add(legend6);
-            this.chartSunLight.Location = new System.Drawing.Point(594, 321);
+            chartArea3.Name = "ChartArea1";
+            this.chartSunLight.ChartAreas.Add(chartArea3);
+            legend3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend3.Name = "Legend1";
+            this.chartSunLight.Legends.Add(legend3);
+            this.chartSunLight.Location = new System.Drawing.Point(18, 19);
             this.chartSunLight.Name = "chartSunLight";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Legend = "Legend1";
-            series6.Name = "Sunlight (W/m2)";
-            this.chartSunLight.Series.Add(series6);
-            this.chartSunLight.Size = new System.Drawing.Size(472, 250);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Legend = "Legend1";
+            series3.Name = "Sunlight (W/m2)";
+            this.chartSunLight.Series.Add(series3);
+            this.chartSunLight.Size = new System.Drawing.Size(576, 313);
             this.chartSunLight.TabIndex = 15;
             this.chartSunLight.Text = "chart3";
-            title6.Name = "Title1";
-            title6.Text = "Sun Light (W/m2)";
-            this.chartSunLight.Titles.Add(title6);
-            // 
-            // panelStatus
-            // 
-            this.panelStatus.BackColor = System.Drawing.Color.Red;
-            this.panelStatus.Location = new System.Drawing.Point(130, 7);
-            this.panelStatus.Name = "panelStatus";
-            this.panelStatus.Size = new System.Drawing.Size(34, 33);
-            this.panelStatus.TabIndex = 16;
+            title3.Name = "Title1";
+            title3.Text = "Sun Light (W/m2)";
+            this.chartSunLight.Titles.Add(title3);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(594, 13);
+            this.label5.Location = new System.Drawing.Point(335, 117);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 16;
@@ -310,7 +376,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(400, 11);
+            this.label6.Location = new System.Drawing.Point(285, 117);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 17;
@@ -319,7 +385,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(758, 13);
+            this.label7.Location = new System.Drawing.Point(376, 117);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 18;
@@ -328,48 +394,206 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(360, 11);
+            this.label8.Location = new System.Drawing.Point(244, 117);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 19;
             this.label8.Text = "Code:";
             // 
-            // ClientConnected_panel
+            // ClearChart_btn
             // 
-            this.ClientConnected_panel.BackColor = System.Drawing.Color.Red;
-            this.ClientConnected_panel.Location = new System.Drawing.Point(130, 55);
-            this.ClientConnected_panel.Name = "ClientConnected_panel";
-            this.ClientConnected_panel.Size = new System.Drawing.Size(34, 33);
-            this.ClientConnected_panel.TabIndex = 17;
+            this.ClearChart_btn.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClearChart_btn.ForeColor = System.Drawing.Color.Black;
+            this.ClearChart_btn.Location = new System.Drawing.Point(148, 77);
+            this.ClearChart_btn.Name = "ClearChart_btn";
+            this.ClearChart_btn.Size = new System.Drawing.Size(75, 23);
+            this.ClearChart_btn.TabIndex = 12;
+            this.ClearChart_btn.Text = "Clear Chart";
+            this.ClearChart_btn.UseVisualStyleBackColor = false;
+            this.ClearChart_btn.Click += new System.EventHandler(this.ClearChart_btn_Click);
             // 
-            // ClientConnected_checkBox
+            // SaveChart_btn
             // 
-            this.ClientConnected_checkBox.AutoSize = true;
-            this.ClientConnected_checkBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientConnected_checkBox.Location = new System.Drawing.Point(170, 71);
-            this.ClientConnected_checkBox.Name = "ClientConnected_checkBox";
-            this.ClientConnected_checkBox.Size = new System.Drawing.Size(107, 17);
-            this.ClientConnected_checkBox.TabIndex = 18;
-            this.ClientConnected_checkBox.Text = "Client Connected";
-            this.ClientConnected_checkBox.UseVisualStyleBackColor = false;
+            this.SaveChart_btn.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.SaveChart_btn.Location = new System.Drawing.Point(229, 334);
+            this.SaveChart_btn.Name = "SaveChart_btn";
+            this.SaveChart_btn.Size = new System.Drawing.Size(75, 23);
+            this.SaveChart_btn.TabIndex = 13;
+            this.SaveChart_btn.Text = "Save Power Chart";
+            this.SaveChart_btn.UseVisualStyleBackColor = false;
+            this.SaveChart_btn.Click += new System.EventHandler(this.SaveChart_btn_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aaaToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1233, 24);
+            this.menuStrip1.TabIndex = 16;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // aaaToolStripMenuItem
+            // 
+            this.aaaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveChartToolStripMenuItem,
+            this.quitToolStripMenuItem});
+            this.aaaToolStripMenuItem.Name = "aaaToolStripMenuItem";
+            this.aaaToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.aaaToolStripMenuItem.Text = "File";
+            this.aaaToolStripMenuItem.Click += new System.EventHandler(this.AaaToolStripMenuItem_Click);
+            // 
+            // saveChartToolStripMenuItem
+            // 
+            this.saveChartToolStripMenuItem.Name = "saveChartToolStripMenuItem";
+            this.saveChartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveChartToolStripMenuItem.Text = "Save Chart";
+            // 
+            // quitToolStripMenuItem
+            // 
+            this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.QuitToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.innovativeSolarPowerToolStripMenuItem});
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // innovativeSolarPowerToolStripMenuItem
+            // 
+            this.innovativeSolarPowerToolStripMenuItem.Name = "innovativeSolarPowerToolStripMenuItem";
+            this.innovativeSolarPowerToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.innovativeSolarPowerToolStripMenuItem.Text = "Innovative Solar Power";
+            // 
+            // Quit_btn
+            // 
+            this.Quit_btn.Location = new System.Drawing.Point(13, 117);
+            this.Quit_btn.Name = "Quit_btn";
+            this.Quit_btn.Size = new System.Drawing.Size(75, 23);
+            this.Quit_btn.TabIndex = 20;
+            this.Quit_btn.Text = "Quit";
+            this.Quit_btn.UseVisualStyleBackColor = true;
+            this.Quit_btn.Click += new System.EventHandler(this.Quit_btn_Click);
+            // 
+            // ClearRxData_btn
+            // 
+            this.ClearRxData_btn.Location = new System.Drawing.Point(13, 19);
+            this.ClearRxData_btn.Name = "ClearRxData_btn";
+            this.ClearRxData_btn.Size = new System.Drawing.Size(75, 23);
+            this.ClearRxData_btn.TabIndex = 7;
+            this.ClearRxData_btn.Text = "Clear Data";
+            this.ClearRxData_btn.UseVisualStyleBackColor = true;
+            this.ClearRxData_btn.Click += new System.EventHandler(this.ClearRxData_btn_Click);
+            // 
+            // SaveSunLightChart_btn
+            // 
+            this.SaveSunLightChart_btn.Location = new System.Drawing.Point(264, 338);
+            this.SaveSunLightChart_btn.Name = "SaveSunLightChart_btn";
+            this.SaveSunLightChart_btn.Size = new System.Drawing.Size(131, 23);
+            this.SaveSunLightChart_btn.TabIndex = 17;
+            this.SaveSunLightChart_btn.Text = "Save Sun Light Chart";
+            this.SaveSunLightChart_btn.UseVisualStyleBackColor = true;
+            this.SaveSunLightChart_btn.Click += new System.EventHandler(this.SaveSunLightChart_btn_Click);
+            // 
+            // SaveData_btn
+            // 
+            this.SaveData_btn.Location = new System.Drawing.Point(104, 18);
+            this.SaveData_btn.Name = "SaveData_btn";
+            this.SaveData_btn.Size = new System.Drawing.Size(75, 23);
+            this.SaveData_btn.TabIndex = 18;
+            this.SaveData_btn.Text = "Save Data";
+            this.SaveData_btn.UseVisualStyleBackColor = true;
+            this.SaveData_btn.Click += new System.EventHandler(this.SaveData_btn_Click);
+            // 
+            // SavePosChart_btn
+            // 
+            this.SavePosChart_btn.Location = new System.Drawing.Point(264, 305);
+            this.SavePosChart_btn.Name = "SavePosChart_btn";
+            this.SavePosChart_btn.Size = new System.Drawing.Size(131, 23);
+            this.SavePosChart_btn.TabIndex = 18;
+            this.SavePosChart_btn.Text = "Save Position Chart";
+            this.SavePosChart_btn.UseVisualStyleBackColor = true;
+            this.SavePosChart_btn.Click += new System.EventHandler(this.SavePosChart_btn_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.datetimePosition);
+            this.groupBox3.Controls.Add(this.SavePosChart_btn);
+            this.groupBox3.Controls.Add(this.chartPosition);
+            this.groupBox3.Location = new System.Drawing.Point(600, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(611, 334);
+            this.groupBox3.TabIndex = 19;
+            this.groupBox3.TabStop = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.datetimeSunLight);
+            this.groupBox4.Controls.Add(this.SaveSunLightChart_btn);
+            this.groupBox4.Controls.Add(this.chartSunLight);
+            this.groupBox4.Location = new System.Drawing.Point(600, 352);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(611, 363);
+            this.groupBox4.TabIndex = 20;
+            this.groupBox4.TabStop = false;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.datetimePower);
+            this.groupBox5.Controls.Add(this.SaveChart_btn);
+            this.groupBox5.Controls.Add(this.chartPower);
+            this.groupBox5.Location = new System.Drawing.Point(24, 352);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(570, 363);
+            this.groupBox5.TabIndex = 21;
+            this.groupBox5.TabStop = false;
+            // 
+            // datetimePower
+            // 
+            this.datetimePower.AutoSize = true;
+            this.datetimePower.Location = new System.Drawing.Point(464, 303);
+            this.datetimePower.Name = "datetimePower";
+            this.datetimePower.Size = new System.Drawing.Size(69, 13);
+            this.datetimePower.TabIndex = 14;
+            this.datetimePower.Text = "MMDDYYYY";
+            // 
+            // datetimePosition
+            // 
+            this.datetimePosition.AutoSize = true;
+            this.datetimePosition.Location = new System.Drawing.Point(501, 268);
+            this.datetimePosition.Name = "datetimePosition";
+            this.datetimePosition.Size = new System.Drawing.Size(69, 13);
+            this.datetimePosition.TabIndex = 15;
+            this.datetimePosition.Text = "MMDDYYYY";
+            // 
+            // datetimeSunLight
+            // 
+            this.datetimeSunLight.AutoSize = true;
+            this.datetimeSunLight.Location = new System.Drawing.Point(501, 303);
+            this.datetimeSunLight.Name = "datetimeSunLight";
+            this.datetimeSunLight.Size = new System.Drawing.Size(69, 13);
+            this.datetimeSunLight.TabIndex = 15;
+            this.datetimeSunLight.Text = "MMDDYYYY";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1080, 584);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.chartSunLight);
-            this.Controls.Add(this.chartPosition);
-            this.Controls.Add(this.txtStatus);
-            this.Controls.Add(this.chartPower);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.HostIP_txtBox);
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ClientSize = new System.Drawing.Size(1233, 743);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ReceivedData_groupBox);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load_1);
@@ -378,8 +602,17 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.ReceivedData_groupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartPosition)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSunLight)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -413,5 +646,24 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox ClientConnected_checkBox;
         private System.Windows.Forms.Panel ClientConnected_panel;
+        private System.Windows.Forms.Button ClearChart_btn;
+        private System.Windows.Forms.Button SaveChart_btn;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem aaaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveChartToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem innovativeSolarPowerToolStripMenuItem;
+        private System.Windows.Forms.Button Quit_btn;
+        private System.Windows.Forms.Button ClearRxData_btn;
+        private System.Windows.Forms.Button SaveData_btn;
+        private System.Windows.Forms.Button SaveSunLightChart_btn;
+        private System.Windows.Forms.Button SavePosChart_btn;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label datetimePower;
+        private System.Windows.Forms.Label datetimePosition;
+        private System.Windows.Forms.Label datetimeSunLight;
     }
 }
