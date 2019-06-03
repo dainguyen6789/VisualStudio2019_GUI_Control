@@ -68,8 +68,12 @@ namespace WindowsFormsApp1
                     //e.ReplyLine(string.Format("You Said {0}", e.MessageString));
 
                     dp = new DataPoint(realtime+x*fake_time_step, Convert.ToDouble(temp_string));
-
-                    chartPosition.Series[0].Points.Add(dp);
+                    if (chartPosition.Series.FindByName(datetimePower.Text) == null)
+                    {
+                        chartPosition.Series.Add(datetimePower.Text);
+                        chartPosition.Series[datetimePower.Text].ChartType = SeriesChartType.Line;
+                    }
+                    chartPosition.Series[datetimePower.Text].Points.Add(dp);
                     chartPosition.ResetAutoValues();
                     Console.WriteLine("I am at Position Chart");
 
@@ -79,8 +83,14 @@ namespace WindowsFormsApp1
                 {
                     light = (Convert.ToDouble(temp_string) * 4 - 55.581) / 0.623;
                     dp = new DataPoint(realtime + x * fake_time_step,light);
+                    if (chartSunLight.Series.FindByName(datetimePower.Text) == null)
+                    {
+                        chartSunLight.Series.Add(datetimePower.Text);
+                        chartSunLight.Series[datetimePower.Text].ChartType = SeriesChartType.Line;
+                    }
+
                     //pwm_time(us)=0.623*light(w/m2)+55.581
-                    chartSunLight.Series[0].Points.Add(dp);
+                    chartSunLight.Series[datetimePower.Text].Points.Add(dp);
                     chartSunLight.ResetAutoValues();
                     Console.WriteLine("I am at Sun Chart");
 
@@ -90,8 +100,10 @@ namespace WindowsFormsApp1
                 {
                     power = 7.2 * (   (Convert.ToDouble(temp_string)-2.5)*10    );
                     dp = new DataPoint(realtime + x * fake_time_step, power);
-
-                    chartPower.Series[0].Points.Add(dp);
+                    if (chartPower.Series.FindByName(datetimePower.Text)== null)
+                        chartPower.Series.Add(datetimePower.Text);
+                    chartPower.Series[datetimePower.Text].ChartType = SeriesChartType.Line;
+                    chartPower.Series[datetimePower.Text].Points.Add(dp);
                     chartPower.ResetAutoValues();
                     Console.WriteLine("I am at Power Chart");
 
@@ -142,6 +154,11 @@ namespace WindowsFormsApp1
 
         private void Form2_Load_1(object sender, EventArgs e)
         {
+            datetimePower.Text=dateTimePicker1.Value.ToString("yyyy:MM:dd");
+            //datetimePower.Text = DateTime.Now.ToString("yyyy:MM:dd:hh:mm");
+            datetimePosition.Text = DateTime.Now.ToString("yyyy:MM:dd");
+            datetimeSunLight.Text = DateTime.Now.ToString("yyyy:MM:dd");
+
             server = new SimpleTcpServer();
             server.Delimiter = 0x13;
             server.StringEncoder = Encoding.UTF8;
@@ -152,8 +169,8 @@ namespace WindowsFormsApp1
             //====================================================
             //if (chart1.Series["Power (W)"] == null)
             {
-                //chart1.Series.Add("Power (W)");
-                chartPower.Series[0].ChartType = SeriesChartType.Line;
+                chartPower.Series.Add(datetimePower.Text);
+                chartPower.Series[datetimePower.Text].ChartType = SeriesChartType.Line;
                 //chart1.Series[0].XValueMember = "Time";
                 //chart1.Series[0].YValueMembers = "Power (W)";
                 //var chartArea = new ChartArea("chart1");
@@ -164,9 +181,7 @@ namespace WindowsFormsApp1
                 //chart1.DataSource = list;
 
             }
-            datetimePower.Text = DateTime.Now.ToString("yyyy:MM:dd");
-            datetimePosition.Text = DateTime.Now.ToString("yyyy:MM:dd");
-            datetimeSunLight.Text = DateTime.Now.ToString("yyyy:MM:dd");
+
 
             chartSunLight.Series[0].ChartType = SeriesChartType.Line;
             chartSunLight.Series[0].XValueMember = "Time";
@@ -303,6 +318,13 @@ namespace WindowsFormsApp1
             {
                 this.chartSunLight.SaveImage(dlg.FileName, ChartImageFormat.Png);
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //datetimePower.Text = DateTime.Now.ToString("yyyy:MM:dd:hh:mm");
+            datetimePower.Text = dateTimePicker1.Value.ToString("yyyy:MM:dd");
+            textBox1.Text= DateTime.Now.ToString("h:mm:ss tt"); 
         }
     }
 }
