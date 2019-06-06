@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Data.SqlClient;
 
 namespace WindowsFormsApp1
 {
@@ -14,7 +15,7 @@ namespace WindowsFormsApp1
     {
         int x = 0;
         double realtime;
-
+        int numberOfZoom=0;
         public List<Entry> list;
         public Form2()
         {
@@ -74,15 +75,20 @@ namespace WindowsFormsApp1
                         chartPosition.Series[datetimePower.Text].ChartType = SeriesChartType.Line;
                     }
                     chartPosition.Series[datetimePower.Text].Points.Add(dp);
-                    chartPosition.ResetAutoValues();
+                    chartPosition.Series[datetimePower.Text].MarkerStyle = MarkerStyle.Diamond;
+                    chartPosition.Series[datetimePower.Text].MarkerSize = 10;
+                    chartPosition.ChartAreas[0].AxisX.Maximum = 17;
+                    chartPosition.ChartAreas[0].AxisX.Minimum = 7;
+                    chartPosition.ChartAreas[0].AxisX.Interval = 0.5;
+                    //chartPosition.ResetAutoValues();
                     Console.WriteLine("I am at Position Chart");
 
                 }
                 // Sunlight Chart 
                 else if (encoded[0] == 'L')
                 {
-                    light = (Convert.ToDouble(temp_string) * 4 - 55.581) / 0.623;
-                    dp = new DataPoint(realtime + x * fake_time_step,light);
+                    light = (Convert.ToDouble(temp_string)*1.5648-53.194);
+                    dp = new DataPoint(realtime + x * fake_time_step,light>0?light:0);
                     if (chartSunLight.Series.FindByName(datetimePower.Text) == null)
                     {
                         chartSunLight.Series.Add(datetimePower.Text);
@@ -92,6 +98,12 @@ namespace WindowsFormsApp1
                     //pwm_time(us)=0.623*light(w/m2)+55.581
                     chartSunLight.Series[datetimePower.Text].Points.Add(dp);
                     chartSunLight.ResetAutoValues();
+
+                    chartSunLight.ChartAreas[0].AxisX.Maximum = 17;
+                    chartSunLight.ChartAreas[0].AxisX.Minimum = 7;
+                    chartSunLight.ChartAreas[0].AxisX.Interval = 0.5;
+                    chartSunLight.Series[datetimePower.Text].MarkerStyle = MarkerStyle.Diamond;
+                    chartSunLight.Series[datetimePower.Text].MarkerSize = 10;
                     Console.WriteLine("I am at Sun Chart");
 
                 }
@@ -99,13 +111,44 @@ namespace WindowsFormsApp1
                 else if (encoded[0] == 'W')
                 {
                     power = 7.2 * (   (Convert.ToDouble(temp_string)-2.5)*10    );
-                    dp = new DataPoint(realtime + x * fake_time_step, power);
+                    dp = new DataPoint(realtime + x * fake_time_step, power>0?power:0);
                     if (chartPower.Series.FindByName(datetimePower.Text)== null)
                         chartPower.Series.Add(datetimePower.Text);
                     chartPower.Series[datetimePower.Text].ChartType = SeriesChartType.Line;
                     chartPower.Series[datetimePower.Text].Points.Add(dp);
-                    chartPower.ResetAutoValues();
+                    chartPower.Series[datetimePower.Text].MarkerStyle = MarkerStyle.Diamond;
+                    chartPower.Series[datetimePower.Text].MarkerSize = 10;
+
+                    //chartPower.ResetAutoValues();
+                    chartPower.ChartAreas[0].AxisY.Maximum = 60;
+                    chartPower.ChartAreas[0].AxisY.Minimum = -1;
+                    chartPower.ChartAreas[0].AxisY.Interval = 5;
+
+                    chartPower.ChartAreas[0].AxisX.Maximum = 17;
+                    chartPower.ChartAreas[0].AxisX.Minimum = 7;
+                    chartPower.ChartAreas[0].AxisX.Interval = 0.5;
+
+                   // chartPower.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
+                   // chartPower.ChartAreas[0].AxisY.ScaleView.Zoomable = true;
+                    //chartPower.
                     Console.WriteLine("I am at Power Chart");
+
+                }
+                // Power Chart
+                else if (encoded[0] == 'J')
+                {
+                    //label5.Text = encoded+"\0";
+                    //e.ReplyLine(string.Format("You Said {0}", e.MessageString));
+
+                    dp = new DataPoint(realtime + x * fake_time_step, Convert.ToDouble(temp_string));
+                    if (chartPosition.Series.FindByName(datetimePower.Text+"JP Pos") == null)
+                    {
+                        chartPosition.Series.Add(datetimePower.Text + "JP Pos");
+                        chartPosition.Series[datetimePower.Text + "JP Pos"].ChartType = SeriesChartType.Line;
+                    }
+                    chartPosition.Series[datetimePower.Text + "JP Pos"].Points.Add(dp);
+                    chartPosition.ResetAutoValues();
+                    Console.WriteLine("I am at JP Position Chart");
 
                 }
                 // Time data
@@ -154,8 +197,12 @@ namespace WindowsFormsApp1
 
         private void Form2_Load_1(object sender, EventArgs e)
         {
-            datetimePower.Text=dateTimePicker1.Value.ToString("yyyy:MM:dd");
-            //datetimePower.Text = DateTime.Now.ToString("yyyy:MM:dd:hh:mm");
+            //chartPower.Series.Clear();
+            //chartSunLight.Series.Clear();
+            //chartPosition.Series.Clear();
+
+            //datetimePower.Text=dateTimePicker1.Value.ToString("yyyy:MM:dd");
+            datetimePower.Text = DateTime.Now.ToString("yyyy:MM:dd");
             datetimePosition.Text = DateTime.Now.ToString("yyyy:MM:dd");
             datetimeSunLight.Text = DateTime.Now.ToString("yyyy:MM:dd");
 
@@ -176,7 +223,7 @@ namespace WindowsFormsApp1
                 //var chartArea = new ChartArea("chart1");
                 chartPower.ChartAreas[0].AxisX.Title = "Time";
                 chartPower.ChartAreas[0].AxisY.Title = "Power(W)";
-
+                chartPower.MouseWheel += chartPower_MouseWheel;
                 // list = new List<Entry>();
                 //chart1.DataSource = list;
 
@@ -199,22 +246,65 @@ namespace WindowsFormsApp1
 
         }
 
+        private void chartPower_MouseWheel(object sender, MouseEventArgs e)
+        {
+            var chart = (Chart)sender;
+            var xAxis = chart.ChartAreas[0].AxisX;
+            var yAxis = chart.ChartAreas[0].AxisY;
+
+            var xMin = xAxis.ScaleView.ViewMinimum;
+            var xMax = xAxis.ScaleView.ViewMaximum;
+            var yMin = yAxis.ScaleView.ViewMinimum;
+            var yMax = yAxis.ScaleView.ViewMaximum;
+
+            int IntervalX = 3;
+            int IntervalY = 3;
+            try
+            {
+                if (e.Delta < 0 && numberOfZoom > 0) // Scrolled down.
+                {
+                    var posXStart = xAxis.PixelPositionToValue(e.Location.X) - IntervalX * 2 / Math.Pow(2, numberOfZoom);
+                    var posXFinish = xAxis.PixelPositionToValue(e.Location.X) + IntervalX * 2 / Math.Pow(2, numberOfZoom);
+                    var posYStart = yAxis.PixelPositionToValue(e.Location.Y) - IntervalY * 2 / Math.Pow(2, numberOfZoom);
+                    var posYFinish = yAxis.PixelPositionToValue(e.Location.Y) + IntervalY * 2 / Math.Pow(2, numberOfZoom);
+
+                    if (posXStart < 0) posXStart = 0;
+                    if (posYStart < 0) posYStart = 0;
+                    if (posYFinish > yAxis.Maximum) posYFinish = yAxis.Maximum;
+                    if (posXFinish > xAxis.Maximum) posYFinish = xAxis.Maximum;
+                    xAxis.ScaleView.Zoom(posXStart, posXFinish);
+                    yAxis.ScaleView.Zoom(posYStart, posYFinish);
+                    numberOfZoom--;
+                }
+                else if (e.Delta < 0 && numberOfZoom == 0) //Last scrolled dowm
+                {
+                    yAxis.ScaleView.ZoomReset();
+                    xAxis.ScaleView.ZoomReset();
+                }
+                else if (e.Delta > 0) // Scrolled up.
+                {
+
+                    var posXStart = xAxis.PixelPositionToValue(e.Location.X) - IntervalX / Math.Pow(2, numberOfZoom);
+                    var posXFinish = xAxis.PixelPositionToValue(e.Location.X) + IntervalX / Math.Pow(2, numberOfZoom);
+                    var posYStart = yAxis.PixelPositionToValue(e.Location.Y) - IntervalY / Math.Pow(2, numberOfZoom);
+                    var posYFinish = yAxis.PixelPositionToValue(e.Location.Y) + IntervalY / Math.Pow(2, numberOfZoom);
+
+                    xAxis.ScaleView.Zoom(posXStart, posXFinish);
+                    yAxis.ScaleView.Zoom(posYStart, posYFinish);
+                    numberOfZoom++;
+                }
+
+                if (numberOfZoom < 0) numberOfZoom = 0;
+            }
+            catch { }
+        }
+
         private void ClearChart_btn_Click(object sender, EventArgs e)
         {
-            foreach (var series in chartPower.Series)
-            {
-                series.Points.Clear();
-            }
+            chartPower.Series.Clear();
+            chartSunLight.Series.Clear();
+            chartPosition.Series.Clear();
 
-            foreach (var series in chartPosition.Series)
-            {
-                series.Points.Clear();
-            }
-
-            foreach (var series in chartSunLight.Series)
-            {
-                series.Points.Clear();
-            }
         }
 
         private void AaaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -292,10 +382,10 @@ namespace WindowsFormsApp1
         {
 
                 SaveFileDialog dlg = new SaveFileDialog();
-                dlg.Filter = "PNG (*.png)|*.png|All files (*.*)|*.*";
+                dlg.Filter = "JPEG (*.jpeg)|*.png|All files (*.*)|*.*";
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                this.chartPower.SaveImage(dlg.FileName, ChartImageFormat.Png);
+                this.chartPower.SaveImage(dlg.FileName, ChartImageFormat.Jpeg);
             }
 
         }
@@ -303,28 +393,40 @@ namespace WindowsFormsApp1
         private void SavePosChart_btn_Click(object sender, EventArgs e)
         {
             SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = "PNG (*.png)|*.png|All files (*.*)|*.*";
+            dlg.Filter = "JPEG (*.jpeg)|*.png|All files (*.*)|*.*";
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                this.chartPosition.SaveImage(dlg.FileName, ChartImageFormat.Png);
+                this.chartPosition.SaveImage(dlg.FileName, ChartImageFormat.Jpeg);
             }
         }
 
         private void SaveSunLightChart_btn_Click(object sender, EventArgs e)
         {
             SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = "PNG (*.png)|*.png|All files (*.*)|*.*";
+            dlg.Filter = "JPEG (*.jpeg)|*.png|All files (*.*)|*.*";
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                this.chartSunLight.SaveImage(dlg.FileName, ChartImageFormat.Png);
+                this.chartSunLight.SaveImage(dlg.FileName, ChartImageFormat.Jpeg);
             }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             //datetimePower.Text = DateTime.Now.ToString("yyyy:MM:dd:hh:mm");
-            datetimePower.Text = dateTimePicker1.Value.ToString("yyyy:MM:dd");
+            datetimePower.Text = DateTime.Now.ToString("yyyy:MM:dd");
+            datetimePosition.Text = DateTime.Now.ToString("yyyy:MM:dd");
+            datetimeSunLight.Text = DateTime.Now.ToString("yyyy:MM:dd");
             textBox1.Text= DateTime.Now.ToString("h:mm:ss tt"); 
+        }
+
+        private void InsertSQLData()
+        {
+            string ConnString = "datasource=localhost;port=3306;username=dainguyen;password=root";
+            string query ="insert into CSharpTestTable(id,number) values (1,2)";
+            SqlConnection sqlconn = new SqlConnection(ConnString);
+            SqlCommand sqlcmd = new SqlCommand(query, sqlconn);
+            sqlconn.Close();
+
         }
     }
 }
