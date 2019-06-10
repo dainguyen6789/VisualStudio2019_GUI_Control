@@ -6,8 +6,11 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Microsoft.VisualBasic.FileIO;
+using System.Globalization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Data.SqlClient;
+//using Microsoft.VisualBasic.TextFieldParser;
 
 namespace WindowsFormsApp1
 {
@@ -16,6 +19,9 @@ namespace WindowsFormsApp1
         int x = 0;
         double realtime;
         int numberOfZoom=0;
+        int numberOfZoomSunLight = 0;
+        int numberOfZoomPosition = 0;
+
         public List<Entry> list;
         public Form2()
         {
@@ -51,7 +57,7 @@ namespace WindowsFormsApp1
                 {
                     if (e.MessageString[i] == '.')
                     { 
-                        real_length = i + 2;// after dot digit and the code "W,M,T"
+                        real_length = i + 3;// after dot digit and the code "W,M,T"
                         break;
                     }
                 }
@@ -200,6 +206,9 @@ namespace WindowsFormsApp1
             //chartPower.Series.Clear();
             //chartSunLight.Series.Clear();
             //chartPosition.Series.Clear();
+            //NumberFormatInfo setPrecision = new NumberFormatInfo();
+           // setPrecision. = 2;
+            Console.WriteLine("Heloooooooooooooooooooooooooo");
 
             //datetimePower.Text=dateTimePicker1.Value.ToString("yyyy:MM:dd");
             datetimePower.Text = DateTime.Now.ToString("yyyy:MM:dd");
@@ -234,16 +243,127 @@ namespace WindowsFormsApp1
             chartSunLight.Series[0].XValueMember = "Time";
             chartSunLight.Series[0].YValueMembers = "Sun Light";
             chartSunLight.ChartAreas[0].AxisX.Title = "Time";
+            chartSunLight.MouseWheel += chartSunLight_MouseWheel;
 
             chartPosition.Series[0].ChartType = SeriesChartType.Line;
             chartPosition.Series[0].XValueMember = "Time";
             chartPosition.Series[0].YValueMembers = "Sun Light";
             chartPosition.ChartAreas[0].AxisX.Title = "Time";
             chartPosition.ChartAreas[0].AxisY.Title = "Position (mm)";
+            chartPosition.MouseWheel += chartPosition_MouseWheel;
 
 
 
+        }
 
+        private void chartPosition_MouseWheel(object sender, MouseEventArgs e)
+        {
+            var chart =(Chart) sender;
+
+            int intervalX = 3;
+            int intervalY = 3;
+            var xAxis = chart.ChartAreas[0].AxisX;
+            var yAxis = chart.ChartAreas[0].AxisY;
+
+            try
+            {
+                if(e.Delta<0 && numberOfZoomPosition>0)// ZOOM OUT
+                {
+                    var posXStart = xAxis.PixelPositionToValue(e.Location.X) - intervalX / Math.Pow(2, numberOfZoomPosition);
+                    var posXFinish = xAxis.PixelPositionToValue(e.Location.X) + intervalX / Math.Pow(2, numberOfZoomPosition);
+
+                    var posYStart = yAxis.PixelPositionToValue(e.Location.Y) - intervalY / Math.Pow(2, numberOfZoomPosition);
+                    var posYFinish = yAxis.PixelPositionToValue(e.Location.Y) + intervalY / Math.Pow(2, numberOfZoomPosition);
+
+
+                    xAxis.ScaleView.Zoom(Math.Round(posXStart, 3), Math.Round(posXFinish, 3));
+                    yAxis.ScaleView.Zoom(Math.Round(posYStart, 3), Math.Round(posYFinish, 3));
+                   // xAxis.ScaleView.Zoom(posXStart, posXFinish);
+                    //yAxis.ScaleView.Zoom(posYStart, posYFinish);
+                    numberOfZoomPosition--;
+
+
+                }
+                else if(e.Delta>0)
+                {
+                    var posXStart = xAxis.PixelPositionToValue(e.Location.X) - intervalX / Math.Pow(2, numberOfZoomPosition);
+                    var posXFinish = xAxis.PixelPositionToValue(e.Location.X) + intervalX / Math.Pow(2, numberOfZoomPosition);
+
+                    var posYStart = yAxis.PixelPositionToValue(e.Location.Y) - intervalY / Math.Pow(2, numberOfZoomPosition);
+                    var posYFinish = yAxis.PixelPositionToValue(e.Location.Y) + intervalY / Math.Pow(2, numberOfZoomPosition);
+
+
+                    xAxis.ScaleView.Zoom(Math.Round(posXStart, 3), Math.Round(posXFinish, 3));
+                    yAxis.ScaleView.Zoom(Math.Round(posYStart, 3), Math.Round(posYFinish, 3));
+                   // xAxis.ScaleView.Zoom(posXStart, posXFinish);
+                   // yAxis.ScaleView.Zoom(posYStart,posYFinish);
+                    numberOfZoomPosition++;
+
+                }
+                else if (e.Delta < 0 && numberOfZoom == 0) //Last scrolled dowm
+                {
+                    yAxis.ScaleView.ZoomReset();
+                    xAxis.ScaleView.ZoomReset();
+                }
+                if (numberOfZoomPosition < 0)
+                    numberOfZoomPosition = 0;
+
+            }
+            catch
+            { }
+
+        }
+
+        private void chartSunLight_MouseWheel(object sender, MouseEventArgs e)
+        {
+            var chart = (Chart)sender;
+            var xAxis = chart.ChartAreas[0].AxisX;
+            var yAxis = chart.ChartAreas[0].AxisY;
+
+            int intervalX = 3;
+            int intervalY = 3;
+
+            try
+            {
+                if (e.Delta < 0 && numberOfZoomSunLight > 0)
+                {
+                    var posXStart = xAxis.PixelPositionToValue(e.Location.X) - intervalX / Math.Pow(2, numberOfZoomSunLight);
+                    var posXFinish = xAxis.PixelPositionToValue(e.Location.X) + intervalX / Math.Pow(2, numberOfZoomSunLight);
+
+                    var posYStart = yAxis.PixelPositionToValue(e.Location.Y) - intervalY / Math.Pow(2, numberOfZoomSunLight);
+                    var posYFinish = yAxis.PixelPositionToValue(e.Location.Y) + intervalY / Math.Pow(2, numberOfZoomSunLight);
+
+                    if (posXStart < 0) posXStart = 0;
+                   // if (posYStart < 0) posYStart = 0;
+
+                    xAxis.ScaleView.Zoom(Math.Round(posXStart, 3), Math.Round(posXFinish, 3));
+                    yAxis.ScaleView.Zoom(Math.Round(posYStart, 3), Math.Round(posYFinish, 3));
+
+                    numberOfZoomSunLight--;
+
+                }
+                else if (e.Delta > 0)
+                {
+                    var posXStart = xAxis.PixelPositionToValue(e.Location.X) - intervalX / Math.Pow(2, numberOfZoomSunLight);
+                    var posXFinish = xAxis.PixelPositionToValue(e.Location.X) + intervalX / Math.Pow(2, numberOfZoomSunLight);
+                    var posYStart = yAxis.PixelPositionToValue(e.Location.Y) - intervalY / Math.Pow(2, numberOfZoomSunLight);
+                    var posYFinish = yAxis.PixelPositionToValue(e.Location.Y) + intervalY / Math.Pow(2, numberOfZoomSunLight);
+
+                    xAxis.ScaleView.Zoom(Math.Round(posXStart, 3), Math.Round(posXFinish, 3));
+                    yAxis.ScaleView.Zoom(Math.Round(posYStart, 3), Math.Round(posYFinish, 3));
+                    numberOfZoomSunLight++;
+                }
+                else if (numberOfZoomSunLight == 0)
+                {
+                    xAxis.ScaleView.ZoomReset();
+                    yAxis.ScaleView.ZoomReset();
+
+                }
+                if (numberOfZoomSunLight < 0) numberOfZoomSunLight = 0;
+
+
+            }
+            catch { }
         }
 
         private void chartPower_MouseWheel(object sender, MouseEventArgs e)
@@ -261,19 +381,23 @@ namespace WindowsFormsApp1
             int IntervalY = 3;
             try
             {
+                // Delta is a sign count of the number of detents the mouse wheel has rotated.
                 if (e.Delta < 0 && numberOfZoom > 0) // Scrolled down.
                 {
-                    var posXStart = xAxis.PixelPositionToValue(e.Location.X) - IntervalX * 2 / Math.Pow(2, numberOfZoom);
-                    var posXFinish = xAxis.PixelPositionToValue(e.Location.X) + IntervalX * 2 / Math.Pow(2, numberOfZoom);
-                    var posYStart = yAxis.PixelPositionToValue(e.Location.Y) - IntervalY * 2 / Math.Pow(2, numberOfZoom);
-                    var posYFinish = yAxis.PixelPositionToValue(e.Location.Y) + IntervalY * 2 / Math.Pow(2, numberOfZoom);
+                    //PixelPositionToValue: Converts an absolute pixel position along an axis to an axis value
+                    //e.Location:  Gets the location of the mouse during the generating mouse event.
+                    // numofZoom variable will change during the mouse wheel event and this will determine the posXStart/Finish and posYStart/Finish.
+                    var posXStart = xAxis.PixelPositionToValue(e.Location.X) - IntervalX  / Math.Pow(2, numberOfZoom);
+                    var posXFinish = xAxis.PixelPositionToValue(e.Location.X) + IntervalX  / Math.Pow(2, numberOfZoom);
+                    var posYStart = yAxis.PixelPositionToValue(e.Location.Y) - IntervalY  / Math.Pow(2, numberOfZoom);
+                    var posYFinish = yAxis.PixelPositionToValue(e.Location.Y) + IntervalY / Math.Pow(2, numberOfZoom);
 
                     if (posXStart < 0) posXStart = 0;
-                    if (posYStart < 0) posYStart = 0;
+                    //if (posYStart < 0) posYStart = 0;
                     if (posYFinish > yAxis.Maximum) posYFinish = yAxis.Maximum;
                     if (posXFinish > xAxis.Maximum) posYFinish = xAxis.Maximum;
-                    xAxis.ScaleView.Zoom(posXStart, posXFinish);
-                    yAxis.ScaleView.Zoom(posYStart, posYFinish);
+                    xAxis.ScaleView.Zoom(Math.Round(posXStart, 3), Math.Round(posXFinish, 3));
+                    yAxis.ScaleView.Zoom(Math.Round(posYStart, 3), Math.Round(posYFinish, 3));
                     numberOfZoom--;
                 }
                 else if (e.Delta < 0 && numberOfZoom == 0) //Last scrolled dowm
@@ -288,9 +412,8 @@ namespace WindowsFormsApp1
                     var posXFinish = xAxis.PixelPositionToValue(e.Location.X) + IntervalX / Math.Pow(2, numberOfZoom);
                     var posYStart = yAxis.PixelPositionToValue(e.Location.Y) - IntervalY / Math.Pow(2, numberOfZoom);
                     var posYFinish = yAxis.PixelPositionToValue(e.Location.Y) + IntervalY / Math.Pow(2, numberOfZoom);
-
-                    xAxis.ScaleView.Zoom(posXStart, posXFinish);
-                    yAxis.ScaleView.Zoom(posYStart, posYFinish);
+                    xAxis.ScaleView.Zoom(Math.Round(posXStart,3), Math.Round(posXFinish,3));
+                    yAxis.ScaleView.Zoom(Math.Round(posYStart,3), Math.Round(posYFinish,3));
                     numberOfZoom++;
                 }
 
@@ -419,14 +542,234 @@ namespace WindowsFormsApp1
             textBox1.Text= DateTime.Now.ToString("h:mm:ss tt"); 
         }
 
-        private void InsertSQLData()
+
+        private void SaveCSV(string date, string time, string data)
         {
-            string ConnString = "datasource=localhost;port=3306;username=dainguyen;password=root";
-            string query ="insert into CSharpTestTable(id,number) values (1,2)";
-            SqlConnection sqlconn = new SqlConnection(ConnString);
-            SqlCommand sqlcmd = new SqlCommand(query, sqlconn);
-            sqlconn.Close();
+
 
         }
+
+        private void SavePowerCSV_btn_Click(object sender, EventArgs e)
+        {
+
+                //var file = @"C:\Users\designer\Documents\ISPData";
+                //int x = 1, y = 3,count=0;
+                SaveFileDialog dlg = new SaveFileDialog();
+                dlg.Filter = "CSV(*.csv)|All files (*.*)";
+                if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    using (var stream = File.CreateText(dlg.FileName + ".csv"))
+                    {
+                    foreach (var dp in chartPower.Series[datetimePower.Text].Points)
+                    {
+                        string csvRow = string.Format("{0},{1},{2}", DateTime.Now.ToString("yyyy:MM:dd"),  dp.XValue.ToString(), dp.YValues[0].ToString());
+                        Console.WriteLine(dp);
+                        //count++;
+                        stream.WriteLine(csvRow);
+
+                    }
+                }
+
+            }
+        }
+
+        private void SaveCSVPosition_btn_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            if(dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                using (var stream=File.CreateText(dlg.FileName+".csv"))
+                    foreach(var dp in chartPosition.Series[datetimePosition.Text].Points)
+                     {
+                        string csvrow = string.Format("{0},{1},{2}", DateTime.Now.ToString("yyyy:MM:dd"),dp.XValue.ToString(),dp.YValues[0].ToString());
+                        stream.WriteLine(csvrow);
+                    }
+            }
+        }
+
+        private void SaveCSVSunLight_btn_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                using (var stream = File.CreateText(dlg.FileName+".csv"))
+                {
+                    foreach (var dp in chartSunLight.Series[datetimeSunLight.Text].Points)
+                    {
+                        string csvstring = string.Format("{0},{1},{2}", DateTime.Now.ToString("yyyy:MM:dd"), dp.XValue.ToString(), dp.YValues[0].ToString());
+                        stream.WriteLine(csvstring);
+                    }
+                }
+            }
+        }
+
+        private void OpenPower_btn_Click(object sender, EventArgs e)
+        {
+            // chartPower.ChartAreas.Clear();
+            // Console.WriteLine("Heloooooooooooooooooooooooooo");
+            DataPoint dp ;
+            OpenFileDialog dlg = new OpenFileDialog();
+            //Console.WriteLine(result);
+            //Console.WriteLine(DialogResult.OK);
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                using (TextFieldParser parser = new TextFieldParser(dlg.FileName))
+                {
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+                    while (!parser.EndOfData)
+                    {
+                        //Process row
+                        string[] fields = parser.ReadFields();
+                        // chartPower.Series.Add(fields[0]);
+                        dp = new DataPoint(Convert.ToDouble(fields[1]), Convert.ToDouble(fields[2]));
+                        if (chartPower.Series.FindByName(fields[0]) == null)
+                            chartPower.Series.Add(fields[0]);
+                        chartPower.Series[fields[0]].ChartType = SeriesChartType.Line;
+
+                        chartPower.Series[fields[0]].Points.Add(dp);
+                        Console.WriteLine(fields[2]);
+                        chartPower.Series[fields[0]].MarkerStyle = MarkerStyle.Diamond;
+                        chartPower.Series[fields[0]].MarkerSize = 10;
+
+                        //chartPower.ResetAutoValues();
+                        chartPower.ChartAreas[0].AxisY.Maximum = 60;
+                        chartPower.ChartAreas[0].AxisY.Minimum = -1;
+                        chartPower.ChartAreas[0].AxisY.Interval = 5;
+
+                        chartPower.ChartAreas[0].AxisX.Maximum = 17;
+                        chartPower.ChartAreas[0].AxisX.Minimum = 7;
+                        chartPower.ChartAreas[0].AxisX.Interval = 0.5;
+                      //  foreach (string field in fields)
+                        {
+                           // Console.WriteLine(fields[2]);
+                        }
+                    }
+                }
+
+                //StreamReader reader = new StreamReader(dlg.FileName);
+
+                //while (!reader.EndOfStream)
+                //{
+
+                //    Console.WriteLine(reader.ReadLine());
+                //}
+            }
+        }
+
+        private void OpenPosition_btn_Click(object sender, EventArgs e)
+        {
+            DataPoint dp;
+            OpenFileDialog dlg = new OpenFileDialog();
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                using (TextFieldParser parser = new TextFieldParser(dlg.FileName))
+                {
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+                    while (!parser.EndOfData)
+                    {
+                        //Process row
+                        string[] fields = parser.ReadFields();
+                        // chartPower.Series.Add(fields[0]);
+                        dp = new DataPoint(Convert.ToDouble(fields[1]), Convert.ToDouble(fields[2]));
+                        if (chartPosition.Series.FindByName(fields[0]) == null)
+                            chartPosition.Series.Add(fields[0]);
+                        chartPosition.Series[fields[0]].ChartType = SeriesChartType.Line;
+
+                        chartPosition.Series[fields[0]].Points.Add(dp);
+                        Console.WriteLine(fields[2]);
+                        chartPosition.Series[fields[0]].MarkerStyle = MarkerStyle.Diamond;
+                        chartPosition.Series[fields[0]].MarkerSize = 10;
+
+                        //chartPower.ResetAutoValues();
+                        //chartPosition.ChartAreas[0].AxisY.Maximum = 60;
+                        chartPosition.ChartAreas[0].AxisY.Minimum = -1;
+                        chartPosition.ChartAreas[0].AxisY.Maximum = 220;
+
+                        //chartPosition.ChartAreas[0].AxisY.Interval = 0.5;
+
+                        chartPosition.ChartAreas[0].AxisX.Maximum = 17;
+                        chartPosition.ChartAreas[0].AxisX.Minimum = 7;
+                        chartPosition.ChartAreas[0].AxisX.Interval = 0.5;
+                        foreach (string field in fields)
+                        {
+                            // Console.WriteLine(fields[2]);
+                        }
+                    }
+                }
+
+                //StreamReader reader = new StreamReader(dlg.FileName);
+
+                //while (!reader.EndOfStream)
+                //{
+
+                //    Console.WriteLine(reader.ReadLine());
+                //}
+            }
+        }
+
+        private void OpenSunLight_btn_Click(object sender, EventArgs e)
+        {
+            DataPoint dp;
+            OpenFileDialog dlg = new OpenFileDialog();
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                using (TextFieldParser parser = new TextFieldParser(dlg.FileName))
+                {
+                    parser.TextFieldType = FieldType.Delimited;
+                    parser.SetDelimiters(",");
+                    while (!parser.EndOfData)
+                    {
+                        //Process row
+                        string[] fields = parser.ReadFields();
+                        // chartPower.Series.Add(fields[0]);
+                        dp = new DataPoint(Convert.ToDouble(fields[1]), Convert.ToDouble(fields[2]));
+                        if (chartSunLight.Series.FindByName(fields[0]) == null)
+                            chartSunLight.Series.Add(fields[0]);
+
+
+                        chartSunLight.Series[fields[0]].ChartType = SeriesChartType.Line;
+                        chartSunLight.Series[fields[0]].Points.Add(dp);
+                        Console.WriteLine(fields[2]);
+                        chartSunLight.Series[fields[0]].MarkerStyle = MarkerStyle.Diamond;
+                        chartSunLight.Series[fields[0]].MarkerSize = 10;
+
+                        //chartPower.ResetAutoValues();
+                        //chartPosition.ChartAreas[0].AxisY.Maximum = 60;
+                        chartSunLight.ChartAreas[0].AxisY.Minimum = -1;
+                        chartSunLight.ChartAreas[0].AxisY.Interval = 5;
+
+                        chartSunLight.ChartAreas[0].AxisX.Maximum = 17;
+                        chartSunLight.ChartAreas[0].AxisX.Minimum = 7;
+                        chartSunLight.ChartAreas[0].AxisX.Interval = 0.5;
+                        foreach (string field in fields)
+                        {
+                            // Console.WriteLine(fields[2]);
+                        }
+                    }
+                }
+
+                //StreamReader reader = new StreamReader(dlg.FileName);
+
+                //while (!reader.EndOfStream)
+                //{
+
+                //    Console.WriteLine(reader.ReadLine());
+                //}
+            }
+        }
+        //private void InsertSQLData()
+        //{
+        //    string ConnString = "datasource=localhost;port=3306;username=dainguyen;password=root";
+        //    string query ="insert into CSharpTestTable(id,number) values (1,2)";
+        //    SqlConnection sqlconn = new SqlConnection(ConnString);
+        //    SqlCommand sqlcmd = new SqlCommand(query, sqlconn);
+        //    sqlconn.Close();
+
+        //}
     }
 }

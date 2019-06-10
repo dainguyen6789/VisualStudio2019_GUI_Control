@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.Start_btn = new System.Windows.Forms.Button();
             this.HostIP_txtBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,6 +50,12 @@
             this.txtStatus = new System.Windows.Forms.RichTextBox();
             this.EnableHost_checkBox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Quit_btn = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ClearChart_btn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ClientConnected_checkBox = new System.Windows.Forms.CheckBox();
             this.ClientConnected_panel = new System.Windows.Forms.Panel();
@@ -60,14 +66,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.ReceivedData_groupBox = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.SaveData_btn = new System.Windows.Forms.Button();
+            this.ClearRxData_btn = new System.Windows.Forms.Button();
             this.chartPosition = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartSunLight = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.ClearChart_btn = new System.Windows.Forms.Button();
             this.SaveChart_btn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.aaaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,20 +80,21 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.innovativeSolarPowerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Quit_btn = new System.Windows.Forms.Button();
-            this.ClearRxData_btn = new System.Windows.Forms.Button();
             this.SaveSunLightChart_btn = new System.Windows.Forms.Button();
-            this.SaveData_btn = new System.Windows.Forms.Button();
             this.SavePosChart_btn = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.datetimePower = new System.Windows.Forms.Label();
+            this.OpenPosition_btn = new System.Windows.Forms.Button();
+            this.SaveCSVPosition_btn = new System.Windows.Forms.Button();
             this.datetimePosition = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.OpenSunLight_btn = new System.Windows.Forms.Button();
+            this.SaveCSVSunLight_btn = new System.Windows.Forms.Button();
             this.datetimeSunLight = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.OpenPower_btn = new System.Windows.Forms.Button();
+            this.SavePowerCSV_btn = new System.Windows.Forms.Button();
+            this.datetimePower = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.chartPower)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -152,28 +158,28 @@
             // chartPower
             // 
             this.chartPower.BackColor = System.Drawing.Color.AntiqueWhite;
-            chartArea1.Name = "ChartArea1";
-            this.chartPower.ChartAreas.Add(chartArea1);
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend1.Name = "Legend1";
-            this.chartPower.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            this.chartPower.ChartAreas.Add(chartArea4);
+            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend4.Name = "Legend1";
+            this.chartPower.Legends.Add(legend4);
             this.chartPower.Location = new System.Drawing.Point(13, 19);
             this.chartPower.Name = "chartPower";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            series1.Name = "Power (W)";
-            this.chartPower.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Legend = "Legend1";
+            series4.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            series4.Name = "Power (W)";
+            this.chartPower.Series.Add(series4);
             this.chartPower.Size = new System.Drawing.Size(547, 313);
             this.chartPower.TabIndex = 5;
             this.chartPower.Text = "chart1";
-            title1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            title1.Name = "Title1";
-            title1.ShadowColor = System.Drawing.SystemColors.ActiveBorder;
-            title1.Text = "System Power (W)";
-            title1.TextStyle = System.Windows.Forms.DataVisualization.Charting.TextStyle.Shadow;
-            this.chartPower.Titles.Add(title1);
+            title4.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            title4.Name = "Title1";
+            title4.ShadowColor = System.Drawing.SystemColors.ActiveBorder;
+            title4.Text = "System Power (W)";
+            title4.TextStyle = System.Windows.Forms.DataVisualization.Charting.TextStyle.Shadow;
+            this.chartPower.Titles.Add(title4);
             // 
             // txtStatus
             // 
@@ -216,6 +222,64 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "User Config";
+            // 
+            // Quit_btn
+            // 
+            this.Quit_btn.Location = new System.Drawing.Point(13, 117);
+            this.Quit_btn.Name = "Quit_btn";
+            this.Quit_btn.Size = new System.Drawing.Size(75, 23);
+            this.Quit_btn.TabIndex = 20;
+            this.Quit_btn.Text = "Quit";
+            this.Quit_btn.UseVisualStyleBackColor = true;
+            this.Quit_btn.Click += new System.EventHandler(this.Quit_btn_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(376, 117);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "label7";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(244, 117);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Code:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(335, 117);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "label5";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(285, 117);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "label6";
+            // 
+            // ClearChart_btn
+            // 
+            this.ClearChart_btn.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClearChart_btn.ForeColor = System.Drawing.Color.Black;
+            this.ClearChart_btn.Location = new System.Drawing.Point(148, 77);
+            this.ClearChart_btn.Name = "ClearChart_btn";
+            this.ClearChart_btn.Size = new System.Drawing.Size(75, 23);
+            this.ClearChart_btn.TabIndex = 12;
+            this.ClearChart_btn.Text = "Clear Chart";
+            this.ClearChart_btn.UseVisualStyleBackColor = false;
+            this.ClearChart_btn.Click += new System.EventHandler(this.ClearChart_btn_Click);
             // 
             // groupBox2
             // 
@@ -324,106 +388,92 @@
             this.ReceivedData_groupBox.TabStop = false;
             this.ReceivedData_groupBox.Text = "Received Data";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(256, 18);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 15;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(360, 18);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 22;
+            // 
+            // SaveData_btn
+            // 
+            this.SaveData_btn.Location = new System.Drawing.Point(104, 18);
+            this.SaveData_btn.Name = "SaveData_btn";
+            this.SaveData_btn.Size = new System.Drawing.Size(75, 23);
+            this.SaveData_btn.TabIndex = 18;
+            this.SaveData_btn.Text = "Save Data";
+            this.SaveData_btn.UseVisualStyleBackColor = true;
+            this.SaveData_btn.Click += new System.EventHandler(this.SaveData_btn_Click);
+            // 
+            // ClearRxData_btn
+            // 
+            this.ClearRxData_btn.Location = new System.Drawing.Point(13, 19);
+            this.ClearRxData_btn.Name = "ClearRxData_btn";
+            this.ClearRxData_btn.Size = new System.Drawing.Size(75, 23);
+            this.ClearRxData_btn.TabIndex = 7;
+            this.ClearRxData_btn.Text = "Clear Data";
+            this.ClearRxData_btn.UseVisualStyleBackColor = true;
+            this.ClearRxData_btn.Click += new System.EventHandler(this.ClearRxData_btn_Click);
+            // 
             // chartPosition
             // 
             this.chartPosition.BackColor = System.Drawing.Color.AntiqueWhite;
             this.chartPosition.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            chartArea2.Name = "ChartArea1";
-            this.chartPosition.ChartAreas.Add(chartArea2);
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend2.IsDockedInsideChartArea = false;
-            legend2.Name = "Legend1";
-            this.chartPosition.Legends.Add(legend2);
+            chartArea5.Name = "ChartArea1";
+            this.chartPosition.ChartAreas.Add(chartArea5);
+            legend5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend5.IsDockedInsideChartArea = false;
+            legend5.Name = "Legend1";
+            this.chartPosition.Legends.Add(legend5);
             this.chartPosition.Location = new System.Drawing.Point(18, 16);
             this.chartPosition.Name = "chartPosition";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.CustomProperties = "LabelStyle=Top";
-            series2.Legend = "Legend1";
-            series2.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            series2.Name = "Position (mm)";
-            this.chartPosition.Series.Add(series2);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.CustomProperties = "LabelStyle=Top";
+            series5.Legend = "Legend1";
+            series5.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            series5.Name = "Position (mm)";
+            this.chartPosition.Series.Add(series5);
             this.chartPosition.Size = new System.Drawing.Size(579, 283);
             this.chartPosition.TabIndex = 14;
             this.chartPosition.Text = "chart2";
-            title2.Name = "Title1";
-            title2.Text = "Motor Position (mm)";
-            this.chartPosition.Titles.Add(title2);
+            title5.Name = "Title1";
+            title5.Text = "Motor Position (mm)";
+            this.chartPosition.Titles.Add(title5);
             // 
             // chartSunLight
             // 
             this.chartSunLight.BackColor = System.Drawing.Color.AntiqueWhite;
-            chartArea3.Name = "ChartArea1";
-            this.chartSunLight.ChartAreas.Add(chartArea3);
-            legend3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend3.Name = "Legend1";
-            this.chartSunLight.Legends.Add(legend3);
+            chartArea6.Name = "ChartArea1";
+            this.chartSunLight.ChartAreas.Add(chartArea6);
+            legend6.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend6.Name = "Legend1";
+            this.chartSunLight.Legends.Add(legend6);
             this.chartSunLight.Location = new System.Drawing.Point(18, 19);
             this.chartSunLight.Name = "chartSunLight";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "Legend1";
-            series3.Name = "GHI Sunlight (W/m2)";
-            this.chartSunLight.Series.Add(series3);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Legend = "Legend1";
+            series6.Name = "GHI Sunlight (W/m2)";
+            this.chartSunLight.Series.Add(series6);
             this.chartSunLight.Size = new System.Drawing.Size(576, 313);
             this.chartSunLight.TabIndex = 15;
             this.chartSunLight.Text = "chart3";
-            title3.Name = "Title1";
-            title3.Text = "GHI Sun Light (W/m2)";
-            this.chartSunLight.Titles.Add(title3);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(335, 117);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "label5";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(285, 117);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "label6";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(376, 117);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "label7";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(244, 117);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Code:";
-            // 
-            // ClearChart_btn
-            // 
-            this.ClearChart_btn.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClearChart_btn.ForeColor = System.Drawing.Color.Black;
-            this.ClearChart_btn.Location = new System.Drawing.Point(148, 77);
-            this.ClearChart_btn.Name = "ClearChart_btn";
-            this.ClearChart_btn.Size = new System.Drawing.Size(75, 23);
-            this.ClearChart_btn.TabIndex = 12;
-            this.ClearChart_btn.Text = "Clear Chart";
-            this.ClearChart_btn.UseVisualStyleBackColor = false;
-            this.ClearChart_btn.Click += new System.EventHandler(this.ClearChart_btn_Click);
+            title6.Name = "Title1";
+            title6.Text = "GHI Sun Light (W/m2)";
+            this.chartSunLight.Titles.Add(title6);
             // 
             // SaveChart_btn
             // 
             this.SaveChart_btn.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.SaveChart_btn.Location = new System.Drawing.Point(229, 334);
+            this.SaveChart_btn.Location = new System.Drawing.Point(222, 338);
             this.SaveChart_btn.Name = "SaveChart_btn";
             this.SaveChart_btn.Size = new System.Drawing.Size(75, 23);
             this.SaveChart_btn.TabIndex = 13;
@@ -455,13 +505,13 @@
             // saveChartToolStripMenuItem
             // 
             this.saveChartToolStripMenuItem.Name = "saveChartToolStripMenuItem";
-            this.saveChartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveChartToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.saveChartToolStripMenuItem.Text = "Save Chart";
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.QuitToolStripMenuItem_Click);
             // 
@@ -479,29 +529,9 @@
             this.innovativeSolarPowerToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.innovativeSolarPowerToolStripMenuItem.Text = "Innovative Solar Power";
             // 
-            // Quit_btn
-            // 
-            this.Quit_btn.Location = new System.Drawing.Point(13, 117);
-            this.Quit_btn.Name = "Quit_btn";
-            this.Quit_btn.Size = new System.Drawing.Size(75, 23);
-            this.Quit_btn.TabIndex = 20;
-            this.Quit_btn.Text = "Quit";
-            this.Quit_btn.UseVisualStyleBackColor = true;
-            this.Quit_btn.Click += new System.EventHandler(this.Quit_btn_Click);
-            // 
-            // ClearRxData_btn
-            // 
-            this.ClearRxData_btn.Location = new System.Drawing.Point(13, 19);
-            this.ClearRxData_btn.Name = "ClearRxData_btn";
-            this.ClearRxData_btn.Size = new System.Drawing.Size(75, 23);
-            this.ClearRxData_btn.TabIndex = 7;
-            this.ClearRxData_btn.Text = "Clear Data";
-            this.ClearRxData_btn.UseVisualStyleBackColor = true;
-            this.ClearRxData_btn.Click += new System.EventHandler(this.ClearRxData_btn_Click);
-            // 
             // SaveSunLightChart_btn
             // 
-            this.SaveSunLightChart_btn.Location = new System.Drawing.Point(264, 338);
+            this.SaveSunLightChart_btn.Location = new System.Drawing.Point(239, 334);
             this.SaveSunLightChart_btn.Name = "SaveSunLightChart_btn";
             this.SaveSunLightChart_btn.Size = new System.Drawing.Size(131, 23);
             this.SaveSunLightChart_btn.TabIndex = 17;
@@ -509,19 +539,9 @@
             this.SaveSunLightChart_btn.UseVisualStyleBackColor = true;
             this.SaveSunLightChart_btn.Click += new System.EventHandler(this.SaveSunLightChart_btn_Click);
             // 
-            // SaveData_btn
-            // 
-            this.SaveData_btn.Location = new System.Drawing.Point(104, 18);
-            this.SaveData_btn.Name = "SaveData_btn";
-            this.SaveData_btn.Size = new System.Drawing.Size(75, 23);
-            this.SaveData_btn.TabIndex = 18;
-            this.SaveData_btn.Text = "Save Data";
-            this.SaveData_btn.UseVisualStyleBackColor = true;
-            this.SaveData_btn.Click += new System.EventHandler(this.SaveData_btn_Click);
-            // 
             // SavePosChart_btn
             // 
-            this.SavePosChart_btn.Location = new System.Drawing.Point(264, 305);
+            this.SavePosChart_btn.Location = new System.Drawing.Point(239, 305);
             this.SavePosChart_btn.Name = "SavePosChart_btn";
             this.SavePosChart_btn.Size = new System.Drawing.Size(131, 23);
             this.SavePosChart_btn.TabIndex = 18;
@@ -531,6 +551,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.OpenPosition_btn);
+            this.groupBox3.Controls.Add(this.SaveCSVPosition_btn);
             this.groupBox3.Controls.Add(this.datetimePosition);
             this.groupBox3.Controls.Add(this.SavePosChart_btn);
             this.groupBox3.Controls.Add(this.chartPosition);
@@ -540,36 +562,25 @@
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
             // 
-            // groupBox4
+            // OpenPosition_btn
             // 
-            this.groupBox4.Controls.Add(this.datetimeSunLight);
-            this.groupBox4.Controls.Add(this.SaveSunLightChart_btn);
-            this.groupBox4.Controls.Add(this.chartSunLight);
-            this.groupBox4.Location = new System.Drawing.Point(600, 352);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(611, 363);
-            this.groupBox4.TabIndex = 20;
-            this.groupBox4.TabStop = false;
+            this.OpenPosition_btn.Location = new System.Drawing.Point(481, 305);
+            this.OpenPosition_btn.Name = "OpenPosition_btn";
+            this.OpenPosition_btn.Size = new System.Drawing.Size(113, 23);
+            this.OpenPosition_btn.TabIndex = 20;
+            this.OpenPosition_btn.Text = "Open Position File";
+            this.OpenPosition_btn.UseVisualStyleBackColor = true;
+            this.OpenPosition_btn.Click += new System.EventHandler(this.OpenPosition_btn_Click);
             // 
-            // groupBox5
+            // SaveCSVPosition_btn
             // 
-            this.groupBox5.Controls.Add(this.datetimePower);
-            this.groupBox5.Controls.Add(this.SaveChart_btn);
-            this.groupBox5.Controls.Add(this.chartPower);
-            this.groupBox5.Location = new System.Drawing.Point(24, 352);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(570, 363);
-            this.groupBox5.TabIndex = 21;
-            this.groupBox5.TabStop = false;
-            // 
-            // datetimePower
-            // 
-            this.datetimePower.AutoSize = true;
-            this.datetimePower.Location = new System.Drawing.Point(455, 303);
-            this.datetimePower.Name = "datetimePower";
-            this.datetimePower.Size = new System.Drawing.Size(69, 13);
-            this.datetimePower.TabIndex = 14;
-            this.datetimePower.Text = "MMDDYYYY";
+            this.SaveCSVPosition_btn.Location = new System.Drawing.Point(18, 305);
+            this.SaveCSVPosition_btn.Name = "SaveCSVPosition_btn";
+            this.SaveCSVPosition_btn.Size = new System.Drawing.Size(75, 23);
+            this.SaveCSVPosition_btn.TabIndex = 19;
+            this.SaveCSVPosition_btn.Text = "Save CSV";
+            this.SaveCSVPosition_btn.UseVisualStyleBackColor = true;
+            this.SaveCSVPosition_btn.Click += new System.EventHandler(this.SaveCSVPosition_btn_Click);
             // 
             // datetimePosition
             // 
@@ -580,6 +591,39 @@
             this.datetimePosition.TabIndex = 15;
             this.datetimePosition.Text = "MMDDYYYY";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.OpenSunLight_btn);
+            this.groupBox4.Controls.Add(this.SaveCSVSunLight_btn);
+            this.groupBox4.Controls.Add(this.datetimeSunLight);
+            this.groupBox4.Controls.Add(this.SaveSunLightChart_btn);
+            this.groupBox4.Controls.Add(this.chartSunLight);
+            this.groupBox4.Location = new System.Drawing.Point(600, 352);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(611, 363);
+            this.groupBox4.TabIndex = 20;
+            this.groupBox4.TabStop = false;
+            // 
+            // OpenSunLight_btn
+            // 
+            this.OpenSunLight_btn.Location = new System.Drawing.Point(475, 334);
+            this.OpenSunLight_btn.Name = "OpenSunLight_btn";
+            this.OpenSunLight_btn.Size = new System.Drawing.Size(119, 23);
+            this.OpenSunLight_btn.TabIndex = 24;
+            this.OpenSunLight_btn.Text = "Open SunLight File";
+            this.OpenSunLight_btn.UseVisualStyleBackColor = true;
+            this.OpenSunLight_btn.Click += new System.EventHandler(this.OpenSunLight_btn_Click);
+            // 
+            // SaveCSVSunLight_btn
+            // 
+            this.SaveCSVSunLight_btn.Location = new System.Drawing.Point(18, 334);
+            this.SaveCSVSunLight_btn.Name = "SaveCSVSunLight_btn";
+            this.SaveCSVSunLight_btn.Size = new System.Drawing.Size(75, 23);
+            this.SaveCSVSunLight_btn.TabIndex = 23;
+            this.SaveCSVSunLight_btn.Text = "Save CSV";
+            this.SaveCSVSunLight_btn.UseVisualStyleBackColor = true;
+            this.SaveCSVSunLight_btn.Click += new System.EventHandler(this.SaveCSVSunLight_btn_Click);
+            // 
             // datetimeSunLight
             // 
             this.datetimeSunLight.AutoSize = true;
@@ -589,24 +633,52 @@
             this.datetimeSunLight.TabIndex = 15;
             this.datetimeSunLight.Text = "MMDDYYYY";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.OpenPower_btn);
+            this.groupBox5.Controls.Add(this.SavePowerCSV_btn);
+            this.groupBox5.Controls.Add(this.datetimePower);
+            this.groupBox5.Controls.Add(this.SaveChart_btn);
+            this.groupBox5.Controls.Add(this.chartPower);
+            this.groupBox5.Location = new System.Drawing.Point(24, 352);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(570, 363);
+            this.groupBox5.TabIndex = 21;
+            this.groupBox5.TabStop = false;
+            // 
+            // OpenPower_btn
+            // 
+            this.OpenPower_btn.Location = new System.Drawing.Point(422, 338);
+            this.OpenPower_btn.Name = "OpenPower_btn";
+            this.OpenPower_btn.Size = new System.Drawing.Size(138, 23);
+            this.OpenPower_btn.TabIndex = 23;
+            this.OpenPower_btn.Text = "Open Power CSV File";
+            this.OpenPower_btn.UseVisualStyleBackColor = true;
+            this.OpenPower_btn.Click += new System.EventHandler(this.OpenPower_btn_Click);
+            // 
+            // SavePowerCSV_btn
+            // 
+            this.SavePowerCSV_btn.Location = new System.Drawing.Point(13, 338);
+            this.SavePowerCSV_btn.Name = "SavePowerCSV_btn";
+            this.SavePowerCSV_btn.Size = new System.Drawing.Size(75, 23);
+            this.SavePowerCSV_btn.TabIndex = 22;
+            this.SavePowerCSV_btn.Text = "Save CSV";
+            this.SavePowerCSV_btn.UseVisualStyleBackColor = true;
+            this.SavePowerCSV_btn.Click += new System.EventHandler(this.SavePowerCSV_btn_Click);
+            // 
+            // datetimePower
+            // 
+            this.datetimePower.AutoSize = true;
+            this.datetimePower.Location = new System.Drawing.Point(455, 303);
+            this.datetimePower.Name = "datetimePower";
+            this.datetimePower.Size = new System.Drawing.Size(69, 13);
+            this.datetimePower.TabIndex = 14;
+            this.datetimePower.Text = "MMDDYYYY";
+            // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(256, 18);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 15;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(360, 18);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 22;
             // 
             // Form2
             // 
@@ -696,5 +768,11 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button SavePowerCSV_btn;
+        private System.Windows.Forms.Button SaveCSVPosition_btn;
+        private System.Windows.Forms.Button SaveCSVSunLight_btn;
+        private System.Windows.Forms.Button OpenPower_btn;
+        private System.Windows.Forms.Button OpenPosition_btn;
+        private System.Windows.Forms.Button OpenSunLight_btn;
     }
 }
