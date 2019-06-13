@@ -57,7 +57,7 @@ namespace WindowsFormsApp1
                 {
                     if (e.MessageString[i] == '.')
                     { 
-                        real_length = i + 3;// after dot digit and the code "W,M,T"
+                        real_length = i + 5;// after dot digit and the code "W,M,T"
                         break;
                     }
                 }
@@ -74,7 +74,7 @@ namespace WindowsFormsApp1
                     //label5.Text = encoded+"\0";
                     //e.ReplyLine(string.Format("You Said {0}", e.MessageString));
 
-                    dp = new DataPoint(realtime+x*fake_time_step, Convert.ToDouble(temp_string));
+                    dp = new DataPoint(realtime, Convert.ToDouble(temp_string));
                     if (chartPosition.Series.FindByName(datetimePower.Text) == null)
                     {
                         chartPosition.Series.Add(datetimePower.Text);
@@ -94,7 +94,7 @@ namespace WindowsFormsApp1
                 else if (encoded[0] == 'L')
                 {
                     light = (Convert.ToDouble(temp_string)*1.5648-53.194);
-                    dp = new DataPoint(realtime + x * fake_time_step,light>0?light:0);
+                    dp = new DataPoint(realtime,light>0?light:0);
                     if (chartSunLight.Series.FindByName(datetimePower.Text) == null)
                     {
                         chartSunLight.Series.Add(datetimePower.Text);
@@ -116,8 +116,10 @@ namespace WindowsFormsApp1
                 // Power Chart
                 else if (encoded[0] == 'W')
                 {
-                    power = 7.2 * (   (Convert.ToDouble(temp_string)-2.5)*10    );
-                    dp = new DataPoint(realtime + x * fake_time_step, power>0?power:0);
+                    // 0.07 is the offset value when we measure the Vout with Input current I=0A, 
+                    // 5Vcc->2.49Vout, 4.83Vcc->2.42Vout
+                    power = 7.2 * (  10* (Convert.ToDouble(temp_string)*4.83/5+0.07)-25    ); 
+                    dp = new DataPoint(realtime, power>0?power:0);
                     if (chartPower.Series.FindByName(datetimePower.Text)== null)
                         chartPower.Series.Add(datetimePower.Text);
                     chartPower.Series[datetimePower.Text].ChartType = SeriesChartType.Line;
@@ -146,7 +148,7 @@ namespace WindowsFormsApp1
                     //label5.Text = encoded+"\0";
                     //e.ReplyLine(string.Format("You Said {0}", e.MessageString));
 
-                    dp = new DataPoint(realtime + x * fake_time_step, Convert.ToDouble(temp_string));
+                    dp = new DataPoint(realtime, Convert.ToDouble(temp_string));
                     if (chartPosition.Series.FindByName(datetimePower.Text+"JP Pos") == null)
                     {
                         chartPosition.Series.Add(datetimePower.Text + "JP Pos");
@@ -278,8 +280,10 @@ namespace WindowsFormsApp1
 
                     xAxis.ScaleView.Zoom(Math.Round(posXStart, 3), Math.Round(posXFinish, 3));
                     yAxis.ScaleView.Zoom(Math.Round(posYStart, 3), Math.Round(posYFinish, 3));
-                   // xAxis.ScaleView.Zoom(posXStart, posXFinish);
+                    // xAxis.ScaleView.Zoom(posXStart, posXFinish);
                     //yAxis.ScaleView.Zoom(posYStart, posYFinish);
+                    chartPosition.ChartAreas[0].AxisX.Interval = 0.1;
+
                     numberOfZoomPosition--;
 
 
@@ -295,8 +299,10 @@ namespace WindowsFormsApp1
 
                     xAxis.ScaleView.Zoom(Math.Round(posXStart, 3), Math.Round(posXFinish, 3));
                     yAxis.ScaleView.Zoom(Math.Round(posYStart, 3), Math.Round(posYFinish, 3));
-                   // xAxis.ScaleView.Zoom(posXStart, posXFinish);
-                   // yAxis.ScaleView.Zoom(posYStart,posYFinish);
+                    // xAxis.ScaleView.Zoom(posXStart, posXFinish);
+                    // yAxis.ScaleView.Zoom(posYStart,posYFinish);
+                    chartPosition.ChartAreas[0].AxisX.Interval =0.1;
+
                     numberOfZoomPosition++;
 
                 }
@@ -304,9 +310,17 @@ namespace WindowsFormsApp1
                 {
                     yAxis.ScaleView.ZoomReset();
                     xAxis.ScaleView.ZoomReset();
+                    chartPosition.ChartAreas[0].AxisX.Interval = 0.5;
+
                 }
                 if (numberOfZoomPosition < 0)
+                {
                     numberOfZoomPosition = 0;
+                    yAxis.ScaleView.ZoomReset();
+                    xAxis.ScaleView.ZoomReset();
+                    chartPosition.ChartAreas[0].AxisX.Interval = 0.5;
+
+                }
 
             }
             catch
@@ -741,7 +755,7 @@ namespace WindowsFormsApp1
                         //chartPower.ResetAutoValues();
                         //chartPosition.ChartAreas[0].AxisY.Maximum = 60;
                         chartSunLight.ChartAreas[0].AxisY.Minimum = -1;
-                        chartSunLight.ChartAreas[0].AxisY.Interval = 5;
+                        //chartSunLight.ChartAreas[0].AxisY.Interval = 5;
 
                         chartSunLight.ChartAreas[0].AxisX.Maximum = 17;
                         chartSunLight.ChartAreas[0].AxisX.Minimum = 7;
